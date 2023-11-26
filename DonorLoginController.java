@@ -1,6 +1,7 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.HashMap;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,6 +16,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class DonorLoginController {
+    private HashMap <String, String> logins = new HashMap <String, String>() {{ put("username", "password"); }};
     @FXML
     private Button login;
     @FXML
@@ -35,7 +37,7 @@ public class DonorLoginController {
                 if (user[0].equals(username.getText()) && user[1].equals(password.getText())) {
                     Parent root;
                     try {
-                    root = FXMLLoader.load(MainApp.class.getResource("AccountTypeSelect.fxml"));
+                    root = FXMLLoader.load(MainApp.class.getResource("SponsorMainPage.fxml"));
                     Scene scene = new Scene(root);
 
                     primaryStage.setScene(scene);

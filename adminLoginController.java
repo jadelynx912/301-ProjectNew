@@ -31,7 +31,7 @@ public class adminLoginController {
     @FXML
     void authenticate(ActionEvent event) throws IOException {
         Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        String csvFile = "src/Data/admin.csv";
+        String csvFile = "src/Data/adminLogins.csv";
         String line;
         String csvSplitBy = ",";
 
@@ -53,7 +53,9 @@ public class adminLoginController {
                     primaryStage.show();
                     } catch (IOException e) {
                         System.out.println("Main Page Error");
+                        e.printStackTrace();
                     }
+                    adminLoginError.setVisible(false);
                     break;
                 }
             }

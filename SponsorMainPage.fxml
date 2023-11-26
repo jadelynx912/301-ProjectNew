@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DonorMainPageController">
+   <children>
+      <Label fx:id="titleLabel" layoutX="7.0" layoutY="6.0" text="Scholarship Sponsor Main " />
+      <Button fx:id="createButton" layoutX="77.0" layoutY="152.0" mnemonicParsing="false" onAction="#handleCreateButton" prefHeight="100.0" prefWidth="200.0" text="Create New Scholarship" />
+      <Button fx:id="viewButton" layoutX="337.0" layoutY="152.0" mnemonicParsing="false" onAction="#handleViewButton" prefHeight="100.0" prefWidth="200.0" text="View Created Scholarships" />
+   </children>
+</AnchorPane>

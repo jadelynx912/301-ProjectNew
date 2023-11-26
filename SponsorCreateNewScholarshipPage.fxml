@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DonorMainPageController">
+   <children>
+      <Label fx:id="titleLabel" layoutX="14.0" layoutY="6.0" text="Scholarship Sponsor Create New Scholarship" />
+      <TextField fx:id="awardNameField" alignment="CENTER" layoutX="18.0" layoutY="142.0" prefHeight="25.0" prefWidth="240.0" promptText="Enter the name of scholarship/grant" />
+      <TextArea fx:id="awardRequirementsField" layoutX="285.0" layoutY="20.0" prefHeight="103.0" prefWidth="273.0" promptText="Enter scholarship requirements" />
+      <TextArea fx:id="recipientRequirementsField" layoutX="285.0" layoutY="133.0" prefHeight="103.0" prefWidth="273.0" promptText="Enter recipient requirements" />
+      <TextField fx:id="nameField" alignment="CENTER" layoutX="18.0" layoutY="37.0" prefHeight="25.0" prefWidth="240.0" promptText="Enter full name" AnchorPane.rightAnchor="342.0" />
+      <TextField fx:id="emailField" alignment="CENTER" layoutX="18.0" layoutY="71.0" prefHeight="25.0" prefWidth="240.0" promptText="Enter email address" />
+      <TextField fx:id="amountField" alignment="CENTER" layoutX="18.0" layoutY="105.0" prefHeight="25.0" prefWidth="240.0" promptText="Enter scholarship amount" />
+      <TextArea fx:id="commentsField" layoutX="285.0" layoutY="251.0" prefHeight="103.0" prefWidth="273.0" promptText="Enter any additional comments/notes" />
+      <TextField fx:id="deadlineField" alignment="CENTER" layoutX="18.0" layoutY="181.0" prefHeight="25.0" prefWidth="240.0" promptText="Enter scholarship deadline mm/dd/yyyy" />
+      <Button fx:id="submitScholarshipButton" layoutX="239.0" layoutY="361.0" mnemonicParsing="false" onAction="#submitScholarship" text="Create Scholarship" />
+   </children>
+</AnchorPane>
