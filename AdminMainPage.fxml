@@ -115,13 +115,13 @@
             </AnchorPane>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="createOrDeletePane" layoutX="7.0" layoutY="78.0" prefHeight="322.0" prefWidth="610.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="78.0">
+      <AnchorPane fx:id="createOrDeletePane" layoutX="-3.0" layoutY="78.0" prefHeight="322.0" prefWidth="620.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-8.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="78.0">
          <children>
-            <Button fx:id="createAccounts" layoutX="135.0" layoutY="114.0" mnemonicParsing="false" onAction="#openCreateAccounts" text="Create Accounts">
+            <Button fx:id="createAccounts" layoutX="140.0" layoutY="114.0" mnemonicParsing="false" onAction="#openCreateAccounts" text="Create Accounts">
                <font>
                   <Font name="Trebuchet MS" size="13.0" />
                </font></Button>
-            <Button fx:id="deleteAccounts" layoutX="359.0" layoutY="114.0" mnemonicParsing="false" onAction="#openDeleteAccounts" text="Delete Accounts">
+            <Button fx:id="deleteAccounts" layoutX="364.0" layoutY="114.0" mnemonicParsing="false" onAction="#openDeleteAccounts" text="Delete Accounts">
                <font>
                   <Font name="Trebuchet MS" size="13.0" />
                </font></Button>
