@@ -13,6 +13,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 
@@ -169,6 +170,20 @@ public class DonorMainPageController {
         }
         catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    @FXML
+    void backToAccountSelect (ActionEvent event) {
+        Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        try {
+            Parent root = FXMLLoader.load(MainApp.class.getResource("AccountTypeSelect.fxml"));
+            Scene scene = new Scene(root);
+
+            primaryStage.setScene(scene);
+            primaryStage.show();
+        } catch (IOException e) {
+            System.out.println("Account Type Select Error");
         }
     }
     

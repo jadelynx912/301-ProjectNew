@@ -9,33 +9,51 @@
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane fx:id="adminMainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="612.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="adminMainPageController">
    <children>
-      <Label fx:id="adminMainTitle" layoutX="242.0" layoutY="14.0" prefHeight="17.0" prefWidth="126.0" text="Administrator Main" textAlignment="CENTER" AnchorPane.leftAnchor="242.0" AnchorPane.rightAnchor="249.0" AnchorPane.topAnchor="14.0" />
-      <MenuButton fx:id="adminActionSelect" layoutX="33.0" layoutY="46.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="174.0" text="Options">
+      <MenuButton fx:id="adminActionSelect" layoutX="19.0" layoutY="50.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="174.0" text="Options">
         <items>
           <MenuItem fx:id="createScholarship" mnemonicParsing="false" onAction="#displayFormCreation" onMenuValidation="#displayFormCreation" text="Create Scholarship Forms" />
           <MenuItem fx:id="notifyApplicants" mnemonicParsing="false" onAction="#openNotifyApplicants" onMenuValidation="#openNotifyApplicants" text="Notify Applicants" />
             <MenuItem fx:id="manageAccounts" mnemonicParsing="false" onAction="#openManageAccounts" onMenuValidation="#openManageAccounts" text="Manage Accounts" />
         </items>
+         <font>
+            <Font name="Trebuchet MS" size="13.0" />
+         </font>
       </MenuButton>
-      <AnchorPane fx:id="notifyApplicantsPane" layoutX="-2.0" layoutY="73.0" prefHeight="327.0" prefWidth="612.0" visible="false">
+      <AnchorPane fx:id="notifyApplicantsPane" layoutX="-2.0" layoutY="78.0" prefHeight="322.0" prefWidth="612.0" visible="false">
          <children>
-            <TextField fx:id="searchBar" layoutX="37.0" layoutY="25.0" prefHeight="35.0" prefWidth="475.0" promptText="Start typing..." />
+            <TextField fx:id="searchBar" layoutX="37.0" layoutY="25.0" prefHeight="35.0" prefWidth="475.0" promptText="Start typing...">
+               <font>
+                  <Font name="Trebuchet MS" size="13.0" />
+               </font></TextField>
             <ListView fx:id="listView" layoutX="30.0" layoutY="63.0" onMouseClicked="#displaySelectedScholarship" prefHeight="235.0" prefWidth="553.0" />
-            <Button fx:id="searchButton" layoutX="527.0" layoutY="29.0" mnemonicParsing="false" onAction="#search" text="Search" />
-            <Text fx:id="searchScholarships" layoutX="251.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search Scholarships" />
+            <Button fx:id="searchButton" layoutX="527.0" layoutY="29.0" mnemonicParsing="false" onAction="#search" text="Search">
+               <font>
+                  <Font name="Trebuchet MS" size="13.0" />
+               </font></Button>
+            <Text fx:id="searchScholarships" layoutX="251.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search Scholarships">
+               <font>
+                  <Font name="Trebuchet MS" size="13.0" />
+               </font></Text>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="createAccountsPane" layoutX="-3.0" layoutY="73.0" prefHeight="327.0" prefWidth="620.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-8.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="73.0">
+      <AnchorPane fx:id="createAccountsPane" layoutX="2.0" layoutY="77.0" prefHeight="323.0" prefWidth="615.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-3.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="77.0">
          <children>
-            <Text layoutX="50.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Account Type" />
+            <Text layoutX="50.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Account Type">
+               <font>
+                  <Font name="Trebuchet MS" size="13.0" />
+               </font></Text>
             <MenuButton fx:id="accountTypeSel" layoutX="142.0" layoutY="28.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="130.0" text="Select">
               <items>
                 <MenuItem fx:id="adminType" mnemonicParsing="false" onAction="#displayAccountFields" text="Administrator" />
@@ -43,33 +61,78 @@
                   <MenuItem fx:id="sponsorType" mnemonicParsing="false" onAction="#displayAccountFields" text="Sponsor/Donor" />
                   <MenuItem fx:id="stewardType" mnemonicParsing="false" onAction="#displayAccountFields" text="Steward" />
               </items>
+               <font>
+                  <Font name="Trebuchet MS" size="13.0" />
+               </font>
             </MenuButton>
             <AnchorPane fx:id="createAccountFieldsPane" layoutY="64.0" prefHeight="264.0" prefWidth="615.0" visible="false">
                <children>
-                  <Text layoutX="56.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username" />
-                  <Text layoutX="56.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" />
-                  <Text layoutX="56.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Confirm Password" />
-                  <Text layoutX="56.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" />
-                  <TextField fx:id="accountCreateUser" layoutX="132.0" layoutY="10.0" />
-                  <PasswordField fx:id="accountCreatePass" layoutX="132.0" layoutY="50.0" />
-                  <PasswordField fx:id="accountCreatePassConfirm" layoutX="179.0" layoutY="89.0" />
-                  <TextField fx:id="accountCreateEmail" layoutX="110.0" layoutY="128.0" />
-                  <Button fx:id="createAccountButton" layoutX="216.0" layoutY="210.0" mnemonicParsing="false" onAction="#createAccount" prefWidth="190.0" text="Create Account" />
-                  <Text fx:id="uniqueUserError" fill="#d30000" layoutX="240.0" layoutY="191.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username already exists." visible="false" />
-                  <Text fx:id="passMatchError" fill="#d30000" layoutX="240.0" layoutY="191.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Passwords do not match." visible="false" wrappingWidth="136.54443359375" />
+                  <Text layoutX="56.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username">
+                     <font>
+                        <Font name="Trebuchet MS" size="13.0" />
+                     </font></Text>
+                  <Text layoutX="56.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password">
+                     <font>
+                        <Font name="Trebuchet MS" size="13.0" />
+                     </font></Text>
+                  <Text layoutX="56.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Confirm Password">
+                     <font>
+                        <Font name="Trebuchet MS" size="13.0" />
+                     </font></Text>
+                  <Text layoutX="56.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email">
+                     <font>
+                        <Font name="Trebuchet MS" size="13.0" />
+                     </font></Text>
+                  <TextField fx:id="accountCreateUser" layoutX="132.0" layoutY="10.0">
+                     <font>
+                        <Font name="Trebuchet MS" size="13.0" />
+                     </font></TextField>
+                  <PasswordField fx:id="accountCreatePass" layoutX="132.0" layoutY="50.0">
+                     <font>
+                        <Font name="Trebuchet MS" size="13.0" />
+                     </font></PasswordField>
+                  <PasswordField fx:id="accountCreatePassConfirm" layoutX="179.0" layoutY="89.0">
+                     <font>
+                        <Font name="Trebuchet MS" size="13.0" />
+                     </font></PasswordField>
+                  <TextField fx:id="accountCreateEmail" layoutX="110.0" layoutY="128.0">
+                     <font>
+                        <Font name="Trebuchet MS" size="13.0" />
+                     </font></TextField>
+                  <Button fx:id="createAccountButton" layoutX="198.0" layoutY="209.0" mnemonicParsing="false" onAction="#createAccount" prefHeight="25.0" prefWidth="220.0" text="Create Account">
+                     <font>
+                        <Font name="Trebuchet MS" size="13.0" />
+                     </font></Button>
+                  <Text fx:id="uniqueUserError" fill="#d30000" layoutX="240.0" layoutY="191.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username already exists." visible="false">
+                     <font>
+                        <Font name="Trebuchet MS" size="13.0" />
+                     </font></Text>
+                  <Text fx:id="passMatchError" fill="#d30000" layoutX="240.0" layoutY="191.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Passwords do not match." visible="false" wrappingWidth="136.54443359375">
+                     <font>
+                        <Font name="Trebuchet MS" size="13.0" />
+                     </font></Text>
                </children>
             </AnchorPane>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="createOrDeletePane" layoutX="2.0" layoutY="73.0" prefHeight="327.0" prefWidth="615.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-3.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="73.0">
+      <AnchorPane fx:id="createOrDeletePane" layoutX="7.0" layoutY="78.0" prefHeight="322.0" prefWidth="610.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="78.0">
          <children>
-            <Button fx:id="createAccounts" layoutX="138.0" layoutY="114.0" mnemonicParsing="false" onAction="#openCreateAccounts" text="Create Accounts" />
-            <Button fx:id="deleteAccounts" layoutX="362.0" layoutY="114.0" mnemonicParsing="false" onAction="#openDeleteAccounts" text="Delete Accounts" />
+            <Button fx:id="createAccounts" layoutX="138.0" layoutY="114.0" mnemonicParsing="false" onAction="#openCreateAccounts" text="Create Accounts">
+               <font>
+                  <Font name="Trebuchet MS" size="13.0" />
+               </font></Button>
+            <Button fx:id="deleteAccounts" layoutX="362.0" layoutY="114.0" mnemonicParsing="false" onAction="#openDeleteAccounts" text="Delete Accounts">
+               <font>
+                  <Font name="Trebuchet MS" size="13.0" />
+               </font></Button>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="deleteAccountsPane" layoutX="-8.0" layoutY="72.0" prefHeight="327.0" prefWidth="620.0" visible="false">
+      <AnchorPane fx:id="deleteAccountsPane" layoutX="-8.0" layoutY="77.0" prefHeight="322.0" prefWidth="620.0" visible="false">
          <children>
-            <Text layoutX="50.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Account Type" />
+            <Text layoutX="50.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Account Type">
+               <font>
+                  <Font name="Trebuchet MS" size="13.0" />
+               </font></Text>
             <MenuButton fx:id="accountTypeSel1" layoutX="142.0" layoutY="28.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="130.0" text="Select">
                <items>
                   <MenuItem fx:id="adminType1" mnemonicParsing="false" onAction="#displayFindDelete" text="Administrator" />
@@ -77,51 +140,120 @@
                   <MenuItem fx:id="sponsorType1" mnemonicParsing="false" onAction="#displayFindDelete" text="Sponsor/Donor" />
                   <MenuItem fx:id="stewardType1" mnemonicParsing="false" onAction="#displayFindDelete" text="Steward" />
                </items>
+               <font>
+                  <Font name="Trebuchet MS" size="13.0" />
+               </font>
             </MenuButton>
             <AnchorPane fx:id="findDeletePane" layoutX="137.0" layoutY="58.0" prefHeight="269.0" prefWidth="620.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="58.0">
                <children>
-                  <TextField fx:id="findDeleteUser" layoutX="55.0" layoutY="34.0" promptText="Enter account username" />
+                  <TextField fx:id="findDeleteUser" layoutX="55.0" layoutY="34.0" promptText="Enter account username">
+                     <font>
+                        <Font name="Trebuchet MS" size="13.0" />
+                     </font></TextField>
                   <AnchorPane fx:id="confirmDeletePane" layoutX="9.0" layoutY="60.0" prefHeight="200.0" prefWidth="609.0" visible="false">
                      <children>
-                        <Text layoutX="35.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Account Details" underline="true" />
-                        <Text fx:id="confirmDeleteUser" layoutX="60.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username" />
-                        <Text fx:id="confirmDeleteEmail" layoutX="61.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" />
-                        <Button fx:id="deleteAccountButton" layoutX="253.0" layoutY="132.0" mnemonicParsing="false" onAction="#deleteAccount" text="Delete Account" />
-                        <Text fx:id="confirmDeleteType" layoutX="60.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Type" />
+                        <Text layoutX="35.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Account Details" underline="true">
+                           <font>
+                              <Font name="Trebuchet MS" size="13.0" />
+                           </font></Text>
+                        <Text fx:id="confirmDeleteUser" layoutX="60.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username">
+                           <font>
+                              <Font name="Trebuchet MS" size="13.0" />
+                           </font></Text>
+                        <Text fx:id="confirmDeleteEmail" layoutX="61.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email">
+                           <font>
+                              <Font name="Trebuchet MS" size="13.0" />
+                           </font></Text>
+                        <Button fx:id="deleteAccountButton" layoutX="253.0" layoutY="132.0" mnemonicParsing="false" onAction="#deleteAccount" text="Delete Account">
+                           <font>
+                              <Font name="Trebuchet MS" size="13.0" />
+                           </font></Button>
+                        <Text fx:id="confirmDeleteType" layoutX="60.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Type">
+                           <font>
+                              <Font name="Trebuchet MS" size="13.0" />
+                           </font></Text>
                      </children>
                   </AnchorPane>
-                  <Button fx:id="findDeleteButton" layoutX="244.0" layoutY="34.0" mnemonicParsing="false" onAction="#displayDeleteConfirmation" text="Find Account" />
+                  <Button fx:id="findDeleteButton" layoutX="244.0" layoutY="34.0" mnemonicParsing="false" onAction="#displayDeleteConfirmation" text="Find Account">
+                     <font>
+                        <Font name="Trebuchet MS" size="13.0" />
+                     </font></Button>
                </children>
             </AnchorPane>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="accountCreationConfirmationPane" layoutX="2.0" layoutY="73.0" prefHeight="327.0" prefWidth="615.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-3.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="73.0">
+      <AnchorPane fx:id="accountCreationConfirmationPane" layoutX="7.0" layoutY="78.0" prefHeight="322.0" prefWidth="610.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="78.0">
          <children>
-            <Text fx:id="confirmUser" layoutX="133.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username" />
-            <Text fx:id="confirmEmail" layoutX="132.0" layoutY="146.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" />
-            <Text fx:id="confirmType" layoutX="133.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Type" />
-            <Text layoutX="223.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Account Successfully Created" />
-            <Button fx:id="createAnotherAccount" layoutX="149.0" layoutY="225.0" mnemonicParsing="false" onAction="#openCreateAccounts" text="Create Another Account" />
-            <Button fx:id="accountCreateDone" layoutX="379.0" layoutY="225.0" mnemonicParsing="false" onAction="#returnToMain" text="Done" />
+            <Text fx:id="confirmUser" layoutX="133.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username">
+               <font>
+                  <Font name="Trebuchet MS" size="13.0" />
+               </font></Text>
+            <Text fx:id="confirmEmail" layoutX="132.0" layoutY="146.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email">
+               <font>
+                  <Font name="Trebuchet MS" size="13.0" />
+               </font></Text>
+            <Text fx:id="confirmType" layoutX="133.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Type">
+               <font>
+                  <Font name="Trebuchet MS" size="13.0" />
+               </font></Text>
+            <Text layoutX="223.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Account Successfully Created">
+               <font>
+                  <Font name="Trebuchet MS" size="13.0" />
+               </font></Text>
+            <Button fx:id="createAnotherAccount" layoutX="149.0" layoutY="225.0" mnemonicParsing="false" onAction="#openCreateAccounts" text="Create Another Account">
+               <font>
+                  <Font name="Trebuchet MS" size="13.0" />
+               </font></Button>
+            <Button fx:id="accountCreateDone" layoutX="379.0" layoutY="225.0" mnemonicParsing="false" onAction="#returnToMain" text="Done">
+               <font>
+                  <Font name="Trebuchet MS" size="13.0" />
+               </font></Button>
          </children>
       </AnchorPane>
       <AnchorPane fx:id="accountDeletionConfirmationPane" layoutX="-2.0" layoutY="83.0" prefHeight="327.0" prefWidth="615.0" visible="false">
          <children>
-            <Text fx:id="confirmUser1" layoutX="133.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username" />
-            <Text fx:id="confirmEmail1" layoutX="132.0" layoutY="146.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" />
-            <Text fx:id="confirmType1" layoutX="133.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Type" />
-            <Text layoutX="222.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Account Successfully Deleted" />
-            <Button fx:id="deleteAnotherAccount" layoutX="149.0" layoutY="225.0" mnemonicParsing="false" onAction="#openDeleteAccounts" text="Delete Another Account" />
-            <Button fx:id="accountDeleteDone" layoutX="379.0" layoutY="225.0" mnemonicParsing="false" onAction="#returnToMain" text="Done" />
+            <Text fx:id="confirmUser1" layoutX="133.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username">
+               <font>
+                  <Font name="Trebuchet MS" size="13.0" />
+               </font></Text>
+            <Text fx:id="confirmEmail1" layoutX="132.0" layoutY="146.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email">
+               <font>
+                  <Font name="Trebuchet MS" size="13.0" />
+               </font></Text>
+            <Text fx:id="confirmType1" layoutX="133.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Type">
+               <font>
+                  <Font name="Trebuchet MS" size="13.0" />
+               </font></Text>
+            <Text layoutX="222.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Account Successfully Deleted">
+               <font>
+                  <Font name="Trebuchet MS" size="13.0" />
+               </font></Text>
+            <Button fx:id="deleteAnotherAccount" layoutX="149.0" layoutY="225.0" mnemonicParsing="false" onAction="#openDeleteAccounts" text="Delete Another Account">
+               <font>
+                  <Font name="Trebuchet MS" size="13.0" />
+               </font></Button>
+            <Button fx:id="accountDeleteDone" layoutX="379.0" layoutY="225.0" mnemonicParsing="false" onAction="#returnToMain" text="Done">
+               <font>
+                  <Font name="Trebuchet MS" size="13.0" />
+               </font></Button>
          </children>
       </AnchorPane>
-      <ScrollPane fx:id="scholarshipToNotifyScroll" layoutY="76.0" pannable="true" prefHeight="327.0" prefWidth="612.0" visible="false">
+      <ScrollPane fx:id="scholarshipToNotifyScroll" layoutY="80.0" pannable="true" prefHeight="323.0" prefWidth="612.0" visible="false">
          <content>
             <AnchorPane fx:id="scholarshipToNotify" prefHeight="523.0" prefWidth="597.0">
                <children>
-                  <Text layoutX="221.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Selected Scholarship Details" />
-                  <Button fx:id="notifyApplicantsButton" layoutX="356.0" layoutY="467.0" mnemonicParsing="false" onAction="#reportEngineNotifyApplicants" text="Notify Applicants" />
-                  <Button fx:id="backToScholarships" layoutX="130.0" layoutY="467.0" mnemonicParsing="false" onAction="#openNotifyApplicants" text="Back to Scholarships" />
+                  <Text layoutX="221.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Selected Scholarship Details">
+                     <font>
+                        <Font name="Trebuchet MS" size="13.0" />
+                     </font></Text>
+                  <Button fx:id="notifyApplicantsButton" layoutX="356.0" layoutY="467.0" mnemonicParsing="false" onAction="#reportEngineNotifyApplicants" text="Notify Applicants">
+                     <font>
+                        <Font name="Trebuchet MS" size="13.0" />
+                     </font></Button>
+                  <Button fx:id="backToScholarships" layoutX="130.0" layoutY="467.0" mnemonicParsing="false" onAction="#openNotifyApplicants" text="Back to Scholarships">
+                     <font>
+                        <Font name="Trebuchet MS" size="13.0" />
+                     </font></Button>
                   <GridPane fx:id="scholarshipPubGridPane1" layoutX="17.0" layoutY="22.0" prefHeight="408.0" prefWidth="563.0">
                      <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="275.0" minWidth="10.0" prefWidth="173.0" />
@@ -137,44 +269,101 @@
                         <RowConstraints maxHeight="377.0" minHeight="10.0" prefHeight="89.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Scholarship Name" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Award Amount" GridPane.rowIndex="1" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Application Deadline" GridPane.rowIndex="2" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Created By" GridPane.rowIndex="3" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Scholarship Requirements" GridPane.rowIndex="4" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Recipient Requirements" GridPane.rowIndex="5" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Comments/Notes" GridPane.rowIndex="6" />
-                        <Text fx:id="titleInfo" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" />
-                        <Text fx:id="amountInfo" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <Text fx:id="deadlineInfo" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <Text fx:id="creatorInfo" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                        <Text fx:id="scholarshipRequirementsInfo" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                        <Text fx:id="recipientRequirementsInfo" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                        <Text fx:id="notesInfo" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Scholarship Name">
+                           <font>
+                              <Font name="Trebuchet MS" size="13.0" />
+                           </font></Text>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Award Amount" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="Trebuchet MS" size="13.0" />
+                           </font></Text>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Application Deadline" GridPane.rowIndex="2">
+                           <font>
+                              <Font name="Trebuchet MS" size="13.0" />
+                           </font></Text>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Created By" GridPane.rowIndex="3">
+                           <font>
+                              <Font name="Trebuchet MS" size="13.0" />
+                           </font></Text>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Scholarship Requirements" GridPane.rowIndex="4">
+                           <font>
+                              <Font name="Trebuchet MS" size="13.0" />
+                           </font></Text>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Recipient Requirements" GridPane.rowIndex="5">
+                           <font>
+                              <Font name="Trebuchet MS" size="13.0" />
+                           </font></Text>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Comments/Notes" GridPane.rowIndex="6">
+                           <font>
+                              <Font name="Trebuchet MS" size="13.0" />
+                           </font></Text>
+                        <Text fx:id="titleInfo" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1">
+                           <font>
+                              <Font name="Trebuchet MS" size="13.0" />
+                           </font></Text>
+                        <Text fx:id="amountInfo" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="Trebuchet MS" size="13.0" />
+                           </font></Text>
+                        <Text fx:id="deadlineInfo" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                           <font>
+                              <Font name="Trebuchet MS" size="13.0" />
+                           </font></Text>
+                        <Text fx:id="creatorInfo" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                           <font>
+                              <Font name="Trebuchet MS" size="13.0" />
+                           </font></Text>
+                        <Text fx:id="scholarshipRequirementsInfo" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                           <font>
+                              <Font name="Trebuchet MS" size="13.0" />
+                           </font></Text>
+                        <Text fx:id="recipientRequirementsInfo" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                           <font>
+                              <Font name="Trebuchet MS" size="13.0" />
+                           </font></Text>
+                        <Text fx:id="notesInfo" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                           <font>
+                              <Font name="Trebuchet MS" size="13.0" />
+                           </font></Text>
                      </children>
                   </GridPane>
                </children>
             </AnchorPane>
          </content>
       </ScrollPane>
-      <AnchorPane fx:id="notificationConfirmation" layoutX="2.0" layoutY="73.0" prefHeight="327.0" prefWidth="615.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-3.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="73.0">
+      <AnchorPane fx:id="notificationConfirmation" layoutX="7.0" layoutY="78.0" prefHeight="322.0" prefWidth="610.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="78.0">
          <children>
-            <Text fx:id="notifSuccess" layoutX="143.0" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Notification Sent Successfully on 0000-00-00 at 00:00:00" />
-            <Button layoutX="159.0" layoutY="202.0" mnemonicParsing="false" onAction="#openNotifyApplicants" text="Return to Notify Applicants" />
-            <Button layoutX="392.0" layoutY="202.0" mnemonicParsing="false" onAction="#returnToMain" text="Done" />
+            <Text fx:id="notifSuccess" layoutX="143.0" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Notification Sent Successfully on 0000-00-00 at 00:00:00">
+               <font>
+                  <Font name="Trebuchet MS" size="13.0" />
+               </font></Text>
+            <Button layoutX="159.0" layoutY="202.0" mnemonicParsing="false" onAction="#openNotifyApplicants" text="Return to Notify Applicants">
+               <font>
+                  <Font name="Trebuchet MS" size="13.0" />
+               </font></Button>
+            <Button layoutX="392.0" layoutY="202.0" mnemonicParsing="false" onAction="#returnToMain" text="Done">
+               <font>
+                  <Font name="Trebuchet MS" size="13.0" />
+               </font></Button>
          </children>
       </AnchorPane>
       <AnchorPane fx:id="scholarshipFormCreationPane" layoutX="10.0" layoutY="79.0" prefHeight="321.0" prefWidth="607.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="79.0">
          <children>
             <ListView fx:id="unpublishedScholarshipsList" layoutX="36.0" layoutY="45.0" onMouseClicked="#displaySelectedUnpubScholarship" prefHeight="245.0" prefWidth="536.0" />
-            <Text layoutX="241.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Scholarships to Review" />
+            <Text layoutX="241.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Scholarships to Review">
+               <font>
+                  <Font name="Trebuchet MS" size="13.0" />
+               </font></Text>
          </children>
       </AnchorPane>
       <ScrollPane fx:id="scholarshipToPublishScroll" layoutX="10.0" layoutY="79.0" prefHeight="321.0" prefWidth="607.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="79.0">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="536.0" prefWidth="588.0">
                <children>
-                  <Text layoutX="250.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Scholarship Details" />
+                  <Text layoutX="250.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Scholarship Details">
+                     <font>
+                        <Font name="Trebuchet MS" size="13.0" />
+                     </font></Text>
                   <GridPane fx:id="scholarshipPubGridPane" layoutX="14.0" layoutY="34.0" prefHeight="408.0" prefWidth="563.0">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="275.0" minWidth="10.0" prefWidth="173.0" />
@@ -190,36 +379,108 @@
                         <RowConstraints maxHeight="377.0" minHeight="10.0" prefHeight="89.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Scholarship Name" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Award Amount" GridPane.rowIndex="1" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Application Deadline" GridPane.rowIndex="2" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Created By" GridPane.rowIndex="3" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Scholarship Requirements" GridPane.rowIndex="4" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Recipient Requirements" GridPane.rowIndex="5" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Comments/Notes" GridPane.rowIndex="6" />
-                        <Text fx:id="pubTitle" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" />
-                        <Text fx:id="pubAmount" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <Text fx:id="pubDeadline" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <Text fx:id="pubCreator" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                        <Text fx:id="pubScholReq" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                        <Text fx:id="pubRecReq" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                        <Text fx:id="pubNotes" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Scholarship Name">
+                           <font>
+                              <Font name="Trebuchet MS" size="13.0" />
+                           </font></Text>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Award Amount" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="Trebuchet MS" size="13.0" />
+                           </font></Text>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Application Deadline" GridPane.rowIndex="2">
+                           <font>
+                              <Font name="Trebuchet MS" size="13.0" />
+                           </font></Text>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Created By" GridPane.rowIndex="3">
+                           <font>
+                              <Font name="Trebuchet MS" size="13.0" />
+                           </font></Text>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Scholarship Requirements" GridPane.rowIndex="4">
+                           <font>
+                              <Font name="Trebuchet MS" size="13.0" />
+                           </font></Text>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Recipient Requirements" GridPane.rowIndex="5">
+                           <font>
+                              <Font name="Trebuchet MS" size="13.0" />
+                           </font></Text>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Comments/Notes" GridPane.rowIndex="6">
+                           <font>
+                              <Font name="Trebuchet MS" size="13.0" />
+                           </font></Text>
+                        <Text fx:id="pubTitle" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1">
+                           <font>
+                              <Font name="Trebuchet MS" size="13.0" />
+                           </font></Text>
+                        <Text fx:id="pubAmount" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="Trebuchet MS" size="13.0" />
+                           </font></Text>
+                        <Text fx:id="pubDeadline" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                           <font>
+                              <Font name="Trebuchet MS" size="13.0" />
+                           </font></Text>
+                        <Text fx:id="pubCreator" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                           <font>
+                              <Font name="Trebuchet MS" size="13.0" />
+                           </font></Text>
+                        <Text fx:id="pubScholReq" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                           <font>
+                              <Font name="Trebuchet MS" size="13.0" />
+                           </font></Text>
+                        <Text fx:id="pubRecReq" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                           <font>
+                              <Font name="Trebuchet MS" size="13.0" />
+                           </font></Text>
+                        <Text fx:id="pubNotes" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                           <font>
+                              <Font name="Trebuchet MS" size="13.0" />
+                           </font></Text>
                      </children>
                   </GridPane>
-                  <Button layoutX="120.0" layoutY="473.0" mnemonicParsing="false" onAction="#displayFormCreation" text=" Back to Scholarships" />
-                  <Button layoutX="348.0" layoutY="473.0" mnemonicParsing="false" onAction="#publishScholarship" text="Publish Scholarship" />
+                  <Button layoutX="120.0" layoutY="473.0" mnemonicParsing="false" onAction="#displayFormCreation" text=" Back to Scholarships">
+                     <font>
+                        <Font name="Trebuchet MS" size="13.0" />
+                     </font></Button>
+                  <Button layoutX="348.0" layoutY="473.0" mnemonicParsing="false" onAction="#publishScholarship" text="Publish Scholarship">
+                     <font>
+                        <Font name="Trebuchet MS" size="13.0" />
+                     </font></Button>
                </children>
             </AnchorPane>
         </content>
       </ScrollPane>
-      <Button alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="10.0" mnemonicParsing="false" onAction="#backToAccountSelect" text="Back" />
-      <AnchorPane fx:id="formCreationConfirmationPane" layoutY="76.0" prefHeight="327.0" prefWidth="612.0" visible="false">
+      <AnchorPane fx:id="formCreationConfirmationPane" layoutY="79.0" prefHeight="324.0" prefWidth="612.0" visible="false">
          <children>
-            <Text layoutX="210.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Scholarship Published Successfully" />
-            <Button layoutX="207.0" layoutY="151.0" mnemonicParsing="false" onAction="#displayFormCreation" text="Create Another Scholarship Form" />
-            <Button layoutX="283.0" layoutY="186.0" mnemonicParsing="false" onAction="#returnToMain" text="Done" />
+            <Text layoutX="210.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Scholarship Published Successfully">
+               <font>
+                  <Font name="Trebuchet MS" size="13.0" />
+               </font></Text>
+            <Button layoutX="207.0" layoutY="151.0" mnemonicParsing="false" onAction="#displayFormCreation" text="Create Another Scholarship Form">
+               <font>
+                  <Font name="Trebuchet MS" size="13.0" />
+               </font></Button>
+            <Button layoutX="283.0" layoutY="186.0" mnemonicParsing="false" onAction="#returnToMain" text="Done">
+               <font>
+                  <Font name="Trebuchet MS" size="13.0" />
+               </font></Button>
          </children>
       </AnchorPane>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c63232" height="45.0" layoutX="-3.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="623.0" AnchorPane.leftAnchor="-8.0" AnchorPane.rightAnchor="-3.0" AnchorPane.topAnchor="0.0" />
+      <Label fx:id="titleLabel" layoutX="218.0" layoutY="12.0" text="Administrator Login" textFill="#0c234b">
+         <font>
+            <Font name="Trebuchet MS" size="19.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="31.0" fitWidth="180.0" layoutX="459.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="7.0">
+         <image>
+            <Image url="@../../../../Desktop/ua_horiz_rgb_4.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="30.0" layoutY="72.0" mnemonicParsing="false" onAction="#backToAccountSelect" text="Back" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="10.0">
+         <font>
+            <Font name="Trebuchet MS" size="13.0" />
+         </font>
+      </Button>
    </children>
    <padding>
       <Insets left="5.0" />

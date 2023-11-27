@@ -1,10 +1,16 @@
+import java.io.IOException;
 import java.util.HashMap;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 public class FundsStewardController {
     private int funds = 0;
@@ -49,6 +55,20 @@ public class FundsStewardController {
         }
         else{
             errorMsg.setVisible(true);
+        }
+    }
+
+    @FXML
+    void backToAccountSelect (ActionEvent event) {
+        Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        try {
+            Parent root = FXMLLoader.load(MainApp.class.getResource("AccountTypeSelect.fxml"));
+            Scene scene = new Scene(root);
+
+            primaryStage.setScene(scene);
+            primaryStage.show();
+        } catch (IOException e) {
+            System.out.println("Account Type Select Error");
         }
     }
 }
