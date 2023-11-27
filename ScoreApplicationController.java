@@ -66,8 +66,8 @@ public class ScoreApplicationController {
         String[] lineParts;
         try (BufferedReader reader = new BufferedReader(new FileReader("src/Data/currentScholarship.csv"))){
             line = reader.readLine();
-            scholarshipName.setText(line.split("/")[0]);
-            scholarshipDesc.setText(line.split("/")[1]);
+            scholarshipName.setText(line.split("#")[0]);
+            scholarshipDesc.setText(line.split("#")[1] + "\t\t" + line.split("#")[2] + "\n" + line.split("#")[4] + " " + line.split("#")[5] + " " + line.split("#")[6]);
         }catch(Exception e) {}
 
         try (BufferedReader reader = new BufferedReader(new FileReader("src/Data/currentApplicant.csv"))){
