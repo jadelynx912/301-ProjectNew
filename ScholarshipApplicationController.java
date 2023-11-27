@@ -80,7 +80,7 @@ public class ScholarshipApplicationController {
         try (BufferedReader reader = new BufferedReader(new FileReader("src/Data/currentScholarship.csv"))){
             line = reader.readLine();
             scholarshipName.setText(line.split("#")[0]);
-            scholarshipDesc.setText(line.split("#")[1] + "\t\t" + line.split("#")[2] + "\n" + line.split("#")[4] + " " + line.split("#")[5] + " " + line.split("#")[6]);
+            scholarshipDesc.setText(line.split("#")[1] + "       " + line.split("#")[2] + "\n" + line.split("#")[4] + " " + line.split("#")[5] + " " + line.split("#")[6]);
         }catch(Exception e) {}
 
         try (BufferedReader reader = new BufferedReader(new FileReader("src/Data/studentInfo.csv"))){
@@ -151,7 +151,7 @@ public class ScholarshipApplicationController {
         String username = netID.getText();
 
         try (FileWriter fw = new FileWriter(new File("src/Data/" + username + "_Applications.csv"), true)){
-            fw.write(scholarshipName.getText() + "/" + scholarshipDesc.getText() + "/" + "Waiting for Review" + "\n");
+            fw.write(scholarshipName.getText() + "#" + scholarshipDesc.getText().replace("\n", "\\n") + "#" + "Waiting for Review" + "\n");
         } catch (Exception e) { System.out.println("Problem saving application"); }
 
         String transfer = yesTransfer.isSelected() ? "yes" : "no";
