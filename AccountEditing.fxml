@@ -204,11 +204,6 @@
                   <Image url="@../../../../Desktop/ua_horiz_rgb_4.png" />
                </image>
             </ImageView>
-            <Button mnemonicParsing="false" onAction="#backToAccountSelect" text="Back" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="10.0">
-               <font>
-                  <Font name="Trebuchet MS" size="13.0" />
-               </font>
-            </Button>
         </children></AnchorPane>
   </content>
 </ScrollPane>
