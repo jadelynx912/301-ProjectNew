@@ -117,8 +117,6 @@ public class AccountEditingController {
             }
         } catch (Exception e){ System.out.println("Error opening StudentLogins file"); }
 
-        System.out.println(rewrite);
-
         if (found) {
             try (FileWriter fw = new FileWriter(new File("src/Data/studentLogins.csv"))) {
                 fw.write(rewrite);
