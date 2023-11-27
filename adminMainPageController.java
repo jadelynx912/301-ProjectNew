@@ -277,6 +277,9 @@ public class adminMainPageController implements Initializable{
     private Text titleInfo, amountInfo, scholarshipRequirementsInfo, recipientRequirementsInfo, notesInfo, deadlineInfo, creatorInfo;
 
     @FXML
+    private Text confirmEmail1, confirmType1, confirmUser1;
+
+    @FXML
     void search(ActionEvent event) {
         scholarships = getScholarships();
         listView.getItems().clear();
@@ -832,13 +835,19 @@ public class adminMainPageController implements Initializable{
         } catch (Exception e) { System.out.println("Error writing to logins file"); }
 
         findDeleteUser.setText(null);
-        confirmDeleteEmail.setText(null);
-        confirmDeleteType.setText(null);
-        confirmDeleteUser.setText(null);
+        
 
         deleteAccountsPane.setVisible(false);
         findDeletePane.setVisible(false);
         confirmDeletePane.setVisible(false);
+
+        confirmType1.setText(confirmDeleteType.getText());
+        confirmUser1.setText(confirmDeleteUser.getText());
+        confirmEmail1.setText(confirmDeleteEmail.getText());
+
+        confirmDeleteEmail.setText(null);
+        confirmDeleteType.setText(null);
+        confirmDeleteUser.setText(null);
 
         accountDeletionConfirmationPane.setVisible(true);
     }

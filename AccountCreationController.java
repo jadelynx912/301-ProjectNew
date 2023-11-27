@@ -129,9 +129,9 @@ public class AccountCreationController {
     @FXML
     void submitForm(ActionEvent event) {
         Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        if (name.getText().equals("") || studentID.getText().equals("") || password.getText().equals("")
-                || netID.getText().equals("") || GPA.getText().equals("") || major.getText().equals("") || 
-                minors.getText().equals("") || gradDate.getText().equals("")){
+        if (name.getText() == "" || studentID.getText() == "" || password.getText() == ""
+                || netID.getText() == "" || GPA.getText() == "" || major.getText() == "" || 
+                minors.getText() == "" || gradDate.getText() == ""){
             errorMessage.setVisible(true);
         }
         else {
@@ -168,6 +168,20 @@ public class AccountCreationController {
                 primaryStage.setScene(scene);
                 primaryStage.show();
             } catch (IOException e) {System.out.println("Login Error");}
+        }
+    }
+
+    @FXML
+    void backToAccountSelect (ActionEvent event) {
+        Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        try {
+            Parent root = FXMLLoader.load(MainApp.class.getResource("AccountTypeSelect.fxml"));
+            Scene scene = new Scene(root);
+
+            primaryStage.setScene(scene);
+            primaryStage.show();
+        } catch (IOException e) {
+            System.out.println("Account Type Select Error");
         }
     }
 }
