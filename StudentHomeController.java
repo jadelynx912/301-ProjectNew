@@ -70,26 +70,31 @@ public class StudentHomeController {
         try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
             if (numDisplayOn < 0) { numDisplayOn += 5; }
             while((line = reader.readLine()) != null){
-                lineParts = line.split("/");
+                lineParts = line.split("#");
                 if (count == 0 + numDisplayOn){
                     Name1.setText(lineParts[0]);
-                    Desc1.setText(lineParts[readIndex]);
+                    if (readIndex == 1){Desc1.setText(lineParts[1] + "\t\t" + lineParts[2] + "\n" + lineParts[4] + " " + lineParts[5] + " " + lineParts[6]);}
+                    else{ Desc1.setText(lineParts[readIndex]);}
                 }
                 else if (count == 1 + numDisplayOn){
                     Name2.setText(lineParts[0]);
-                    Desc2.setText(lineParts[readIndex]);
+                    if (readIndex == 1){Desc2.setText(lineParts[1] + "\t\t" + lineParts[2] + "\n" + lineParts[4] + " " + lineParts[5] + " " + lineParts[6]);}
+                    else{ Desc2.setText(lineParts[readIndex]);}
                 }
                 else if (count == 2 + numDisplayOn){
                     Name3.setText(lineParts[0]);
-                    Desc3.setText(lineParts[readIndex]);
+                    if (readIndex == 1){Desc3.setText(lineParts[1] + "\t\t" + lineParts[2] + "\n" + lineParts[4] + " " + lineParts[5] + " " + lineParts[6]);}
+                    else{ Desc3.setText(lineParts[readIndex]);}
                 }
                 else if (count == 3 + numDisplayOn){
                     Name4.setText(lineParts[0]);
-                    Desc4.setText(lineParts[readIndex]);
+                    if (readIndex == 1){Desc4.setText(lineParts[1] + "\t\t" + lineParts[2] + "\n" + lineParts[4] + " " + lineParts[5] + " " + lineParts[6]);}
+                    else{ Desc4.setText(lineParts[readIndex]);}
                 }
                 else if (count == 4 + numDisplayOn){
                     Name5.setText(lineParts[0]);
-                    Desc5.setText(lineParts[readIndex]);
+                    if (readIndex == 1){Desc5.setText(lineParts[1] + "\t\t" + lineParts[2] + "\n" + lineParts[4] + " " + lineParts[5] + " " + lineParts[6]);}
+                    else{ Desc5.setText(lineParts[readIndex]);}
                 }
                 count += 1;
             }
@@ -120,6 +125,7 @@ public class StudentHomeController {
                 count += 1;
             }
         } catch (Exception e) { 
+            System.out.println(e.getMessage());
             Name1.setText("");
             Desc1.setText("");
             Name2.setText("");
@@ -219,7 +225,7 @@ public class StudentHomeController {
         checkStatus.setVisible(false);
     }
 
-   @FXML
+    @FXML
     void backToHomepage(ActionEvent event) {
         apply1.setVisible(true);
         apply2.setVisible(true);
@@ -227,7 +233,7 @@ public class StudentHomeController {
         apply4.setVisible(true);
         apply5.setVisible(true);
         backButton.setVisible(false);
-        checkStatus.setVisible(true);;
+        checkStatus.setVisible(true);
         readIndex = 1;
         numDisplayOn = 0;
         filename = "src/Data/scholarships.csv";
