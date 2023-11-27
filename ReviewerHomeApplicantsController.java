@@ -81,7 +81,7 @@ public class ReviewerHomeApplicantsController {
         apply5.setVisible(false);
 
         try (BufferedReader reader = new BufferedReader(new FileReader("src/Data/currentScholarship.csv"))){
-            scholarshipName = reader.readLine().split("/")[0];
+            scholarshipName = reader.readLine().split("#")[0];
         }catch (Exception e) {System.out.println("Error reading from currentScholarship"); }
 
 
