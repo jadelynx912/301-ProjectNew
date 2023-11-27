@@ -50,7 +50,7 @@
             <Label fx:id="scholarshipDesc" alignment="TOP_CENTER" layoutX="83.0" layoutY="143.0" prefHeight="134.0" prefWidth="416.0" text="Label" wrapText="true" />
             <Button fx:id="upload" layoutX="306.0" layoutY="1141.0" mnemonicParsing="false" onAction="#uploadFile" prefHeight="26.0" prefWidth="149.0" text="Upload file" />
             <Label layoutX="19.0" layoutY="1146.0" text="Please upload a pdf of your resume:" />
-            <Label fx:id="filePath" alignment="CENTER" layoutX="230.0" layoutY="1167.0" prefHeight="18.0" prefWidth="301.0" text="Label" visible="false" />
+            <Label fx:id="filePath" alignment="CENTER" layoutX="230.0" layoutY="1167.0" prefHeight="18.0" prefWidth="301.0" visible="false" />
          </children></AnchorPane>
   </content>
 </ScrollPane>

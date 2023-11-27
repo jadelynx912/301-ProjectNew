@@ -129,9 +129,9 @@ public class AccountCreationController {
     @FXML
     void submitForm(ActionEvent event) {
         Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        if (name.getText() == "" || studentID.getText() == "" || password.getText() == ""
-                || netID.getText() == "" || GPA.getText() == "" || major.getText() == "" || 
-                minors.getText() == "" || gradDate.getText() == ""){
+        if (name.getText().equals("") || studentID.getText().equals("") || password.getText().equals("")
+                || netID.getText().equals("") || GPA.getText().equals("") || major.getText().equals("") || 
+                minors.getText().equals("") || gradDate.getText().equals("")){
             errorMessage.setVisible(true);
         }
         else {

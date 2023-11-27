@@ -3,6 +3,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDateTime;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -155,11 +156,12 @@ public class ScholarshipApplicationController {
 
         String transfer = yesTransfer.isSelected() ? "yes" : "no";
         String citizenship = yesCitizen.isSelected() ? "yes" : "no";
-        try (FileWriter fw = new FileWriter(new File("src/Data/" + scholarshipName.getText() + "_Applicants.csv"))){
+        try (FileWriter fw = new FileWriter(new File("src/Data/" + scholarshipName.getText() + "_Applicants.csv"), true)){
             fw.write(netID.getText() + "#" + name.getText() + "#" + studentID.getText() + "#" + 
                     major.getText() + "#" + minors.getText() + "#" + GPA.getText() + "#" + gradDate.getText() + "#" + 
                     classStanding.getText() + "#" + credits.getText() + "#" + citizenship + "#" + gender.getText() + "#" + 
-                    transfer + "#" + financialInfo.getText() + "#" + personalStatement.getText() + "#" + filePath.getText() + "\n");
+                    transfer + "#" + financialInfo.getText() + "#" + personalStatement.getText() + "#" + filePath.getText() + "#" 
+                    + LocalDateTime.now().toString().split("T")[0].replace("-", "/") + "\n");
         } catch (Exception e) { System.out.println("Problem saving application"); }
 
         Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();

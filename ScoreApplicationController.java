@@ -73,25 +73,26 @@ public class ScoreApplicationController {
         try (BufferedReader reader = new BufferedReader(new FileReader("src/Data/currentApplicant.csv"))){
             while ((line = reader.readLine()) != null){
                 lineParts = line.split("#");
-                studentID.setText(lineParts[3]);
-                major.setText(lineParts[4]);
-                minors.setText(lineParts[5]);
-                GPA.setText(lineParts[6]);
-                gradDate.setText(lineParts[7]);
-                classStanding.setText(lineParts[8]);
-                credits.setText(lineParts[9]);
-                citizenship.setText(lineParts[10]);
-                gender.setText(lineParts[11]);
-                transfer.setText(lineParts[12]);
-                financialInfo.setText(lineParts[13]);
-                personalStatement.setText(lineParts[14]);
+                studentID.setText(lineParts[2]);
+                major.setText(lineParts[3]);
+                minors.setText(lineParts[4]);
+                GPA.setText(lineParts[5]);
+                gradDate.setText(lineParts[6]);
+                classStanding.setText(lineParts[7]);
+                credits.setText(lineParts[8]);
+                citizenship.setText(lineParts[9]);
+                gender.setText(lineParts[10]);
+                transfer.setText(lineParts[11]);
+                financialInfo.setText(lineParts[12]);
+                personalStatement.setText(lineParts[13]);
+                filePath.setText(lineParts[14]);
                 dateApplied.setText(lineParts[15]);
                 if (lineParts.length > 16){
                     score.setText(lineParts[16]);
                     comments.setText(lineParts[17]);
                 }
             }
-        } catch (Exception e){ System.out.println("Error opening StudentLogins file"); }
+        } catch (Exception e){ System.out.println(e.getMessage()); }
     }
 
     @FXML

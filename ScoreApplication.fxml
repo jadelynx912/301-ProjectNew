@@ -42,7 +42,7 @@
             <Label fx:id="transfer" layoutX="230.0" layoutY="561.0" prefHeight="18.0" prefWidth="250.0" text="Label" />
             <Label fx:id="gender" layoutX="230.0" layoutY="521.0" prefHeight="18.0" prefWidth="250.0" text="Label" />
             <Label fx:id="financialInfo" alignment="TOP_LEFT" layoutX="230.0" layoutY="618.0" prefHeight="108.0" prefWidth="315.0" text="Label" wrapText="true" />
-            <Label layoutX="230.0" layoutY="1013.0" prefHeight="18.0" prefWidth="250.0" text="Label" />
+            <Label fx:id="filePath" layoutX="230.0" layoutY="1013.0" prefHeight="18.0" prefWidth="250.0" text="Label" />
             <Label fx:id="personalStatement" alignment="TOP_LEFT" layoutX="230.0" layoutY="750.0" prefHeight="239.0" prefWidth="315.0" text="Label" wrapText="true" />
             <TextArea fx:id="comments" layoutX="40.0" layoutY="1102.0" prefHeight="100.0" prefWidth="500.0" promptText="Comments:" />
             <TextField fx:id="score" layoutX="375.0" layoutY="1058.0" promptText="Score (0 to 100)" />
