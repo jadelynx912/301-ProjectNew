@@ -2,13 +2,15 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ReviewerHomeController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ReviewerHomeApplicantsController">
    <children>
+      <TextField fx:id="searchBar" layoutX="30.0" layoutY="27.0" prefHeight="26.0" prefWidth="298.0" promptText="Search for scholarship" />
       <GridPane layoutX="33.0" layoutY="64.0" prefHeight="275.0" prefWidth="543.0">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="110.99998779296875" minWidth="10.0" prefWidth="97.20001220703125" />
@@ -33,14 +35,16 @@
             <Label fx:id="Desc4" alignment="TOP_LEFT" prefHeight="56.0" prefWidth="380.0" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <Label fx:id="Name5" alignment="TOP_LEFT" prefHeight="60.0" prefWidth="95.0" text="Label" wrapText="true" GridPane.rowIndex="4" />
             <Label fx:id="Desc5" alignment="TOP_LEFT" prefHeight="56.0" prefWidth="380.0" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <Button fx:id="apply1" mnemonicParsing="false" onAction="#apply" text="Applicants" GridPane.columnIndex="2" />
-            <Button fx:id="apply2" mnemonicParsing="false" onAction="#apply" text="Applicants" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            <Button fx:id="apply3" mnemonicParsing="false" onAction="#apply" text="Applicants" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-            <Button fx:id="apply4" mnemonicParsing="false" onAction="#apply" text="Applicants" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-            <Button fx:id="apply5" mnemonicParsing="false" onAction="#apply" text="Applicants" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+            <Button fx:id="apply1" mnemonicParsing="false" onAction="#apply" text="Score" GridPane.columnIndex="2" />
+            <Button fx:id="apply2" mnemonicParsing="false" onAction="#apply" text="Score" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <Button fx:id="apply3" mnemonicParsing="false" onAction="#apply" text="Score" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <Button fx:id="apply4" mnemonicParsing="false" onAction="#apply" text="Score" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+            <Button fx:id="apply5" mnemonicParsing="false" onAction="#apply" text="Score" GridPane.columnIndex="2" GridPane.rowIndex="4" />
          </children>
       </GridPane>
+      <Button fx:id="searchButton" layoutX="339.0" layoutY="28.0" mnemonicParsing="false" onAction="#searchScholarships" text="Search" />
       <Button fx:id="nextPage" layoutX="307.0" layoutY="360.0" mnemonicParsing="false" onAction="#displayNext5" text="Next" />
       <Button fx:id="prevPage" layoutX="251.0" layoutY="360.0" mnemonicParsing="false" onAction="#displayPrev5" text="Prev" />
+      <Button fx:id="backButton" layoutX="30.0" layoutY="360.0" mnemonicParsing="false" onAction="#backToHomepage" text="Back" />
    </children>
 </AnchorPane>

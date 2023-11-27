@@ -15,7 +15,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class ReviewerHomeController {
+public class ReviewerHomeApplicantsController {
     @FXML
     private Label Desc1;
     @FXML
@@ -62,37 +62,52 @@ public class ReviewerHomeController {
     private Button searchButton;
 
     private int numDisplayOn = 0;
-    private String filename = "src/Data/scholarships.csv";
-    private int readIndex = 1;
+    private String scholarshipName;
 
     @FXML
     private void initialize(){
         String line;
         String[] lineParts;
         int count = 0;
-        try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
+        Name1.setText("Applicant 1");
+        Name2.setText("Applicant 2");
+        Name3.setText("Applicant 3");
+        Name4.setText("Applicant 4");
+        Name5.setText("Applicant 5");
+        apply1.setVisible(false);
+        apply2.setVisible(false);
+        apply3.setVisible(false);
+        apply4.setVisible(false);
+        apply5.setVisible(false);
+
+        try (BufferedReader reader = new BufferedReader(new FileReader("src/Data/currentScholarship.csv"))){
+            scholarshipName = reader.readLine().split("/")[0];
+        }catch (Exception e) {System.out.println("Error reading from currentScholarship"); }
+
+
+        try (BufferedReader reader = new BufferedReader(new FileReader("src/Data/" + scholarshipName + "_Applicants.csv"))) {
             if (numDisplayOn < 0) { numDisplayOn += 5; }
             while((line = reader.readLine()) != null){
-                lineParts = line.split("/");
+                lineParts = line.split("#");
                 if (count == 0 + numDisplayOn){
-                    Name1.setText(lineParts[0]);
-                    Desc1.setText(lineParts[readIndex]);
+                    Desc1.setText(lineParts[2] + "\nMajor: " + lineParts[3] + "\tMinor(s): " + lineParts[4] + "\nGPA: " + lineParts[5]);
+                    apply1.setVisible(true);
                 }
                 else if (count == 1 + numDisplayOn){
-                    Name2.setText(lineParts[0]);
-                    Desc2.setText(lineParts[readIndex]);
+                    Desc2.setText(lineParts[2] + "\nMajor: " + lineParts[3] + "\tMinor(s): " + lineParts[4] + "\nGPA: " + lineParts[5]);
+                    apply2.setVisible(true);
                 }
                 else if (count == 2 + numDisplayOn){
-                    Name3.setText(lineParts[0]);
-                    Desc3.setText(lineParts[readIndex]);
+                    Desc3.setText(lineParts[2] + "\nMajor: " + lineParts[3] + "\tMinor(s): " + lineParts[4] + "\nGPA: " + lineParts[5]);
+                    apply3.setVisible(true);
                 }
                 else if (count == 3 + numDisplayOn){
-                    Name4.setText(lineParts[0]);
-                    Desc4.setText(lineParts[readIndex]);
+                    Desc4.setText(lineParts[2] + "\nMajor: " + lineParts[3] + "\tMinor(s): " + lineParts[4] + "\nGPA: " + lineParts[5]);
+                    apply4.setVisible(true);
                 }
                 else if (count == 4 + numDisplayOn){
-                    Name5.setText(lineParts[0]);
-                    Desc5.setText(lineParts[readIndex]);
+                    Desc5.setText(lineParts[2] + "\nMajor: " + lineParts[3] + "\tMinor(s): " + lineParts[4] + "\nGPA: " + lineParts[5]);
+                    apply5.setVisible(true);
                 }
                 count += 1;
             }
@@ -124,7 +139,7 @@ public class ReviewerHomeController {
             }
         } catch (Exception e) { 
             Name1.setText("");
-            Desc1.setText("");
+            Desc1.setText("No applicants found");
             Name2.setText("");
             Desc2.setText("");
             Name3.setText("");
@@ -150,13 +165,13 @@ public class ReviewerHomeController {
 
     @FXML
     void apply(ActionEvent event) {
+        String id = ((Node)event.getSource()).getId();
         String line = "";
         int count = 0;
-        String id = ((Node)event.getSource()).getId();
-        try (BufferedReader reader = new BufferedReader(new FileReader("src/Data/scholarships.csv"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("src/Data/" + scholarshipName + "_Applicants.csv"))) {
             while ((line = reader.readLine()) != null){
                 if (count == numDisplayOn + Integer.parseInt(Character.toString(id.charAt(id.length() - 1))) - 1){
-                    try (FileWriter fw = new FileWriter(new File("src/Data/currentScholarship.csv"))){
+                    try (FileWriter fw = new FileWriter(new File("src/Data/currentApplicant.csv"))){
                         fw.write(line);
                     } catch (Exception e) {System.out.println("Error writing to curr scholarship file"); }
                 }
@@ -164,23 +179,16 @@ public class ReviewerHomeController {
             }
         } catch (Exception e) {System.out.println("Error getting scholarship");}
 
-        String name = "";
-        try (BufferedReader reader = new BufferedReader(new FileReader("src/Data/currentScholarship.csv"))){
-            name = reader.readLine().split("/")[0];
-        }catch (Exception e) {System.out.println("Error reading from currentScholarship"); }
-
-        filename = "src/Data/" + name + "_Applicants.csv";
-
         Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
         Parent root;
         try {
-            root = FXMLLoader.load(MainApp.class.getResource("ReviewerHomeApplicants.fxml"));
-            Scene scene = new Scene(root);
+        root = FXMLLoader.load(MainApp.class.getResource("ScoreApplication.fxml"));
+        Scene scene = new Scene(root);
 
-            primaryStage.setScene(scene);
-            primaryStage.show();
+        primaryStage.setScene(scene);
+        primaryStage.show();
         } catch (IOException e) {
-            System.out.println("Login Error");
+            System.out.println(e.getMessage());
         }
     }
 
@@ -189,5 +197,21 @@ public class ReviewerHomeController {
         System.out.println("Search term: " + searchBar.getText());
         numDisplayOn = 0;
         initialize();
+    }
+
+    @FXML
+    void backToHomepage(ActionEvent event) {
+        Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        Parent root;
+        try {
+            root = FXMLLoader.load(MainApp.class.getResource("ReviewerHome.fxml"));
+            Scene scene = new Scene(root);
+
+            //primaryStage.setTitle("UArizona Scholarship Application Management");
+            primaryStage.setScene(scene);
+            primaryStage.show();
+        } catch (IOException e) {
+            System.out.println("Login Error");
+        }
     }
 }
