@@ -70,6 +70,11 @@ public class ReviewerHomeController {
         String line;
         String[] lineParts;
         int count = 0;
+        apply1.setVisible(false);
+        apply2.setVisible(false);
+        apply3.setVisible(false);
+        apply4.setVisible(false);
+        apply5.setVisible(false);
         try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
             if (numDisplayOn < 0) { numDisplayOn += 5; }
             while((line = reader.readLine()) != null){
@@ -78,26 +83,30 @@ public class ReviewerHomeController {
                     Name1.setText(lineParts[0]);
                     if (readIndex == 1){Desc1.setText(lineParts[1] + "\t\t" + lineParts[2] + "\n" + lineParts[4] + " " + lineParts[5] + " " + lineParts[6]);}
                     else{ Desc1.setText(lineParts[readIndex]);}
-                }
+                    apply1.setVisible(true);                }
                 else if (count == 1 + numDisplayOn){
                     Name2.setText(lineParts[0]);
                     if (readIndex == 1){Desc2.setText(lineParts[1] + "\t\t" + lineParts[2] + "\n" + lineParts[4] + " " + lineParts[5] + " " + lineParts[6]);}
                     else{ Desc2.setText(lineParts[readIndex]);}
+                    apply2.setVisible(true);
                 }
                 else if (count == 2 + numDisplayOn){
                     Name3.setText(lineParts[0]);
                     if (readIndex == 1){Desc3.setText(lineParts[1] + "\t\t" + lineParts[2] + "\n" + lineParts[4] + " " + lineParts[5] + " " + lineParts[6]);}
                     else{ Desc3.setText(lineParts[readIndex]);}
+                    apply3.setVisible(true);
                 }
                 else if (count == 3 + numDisplayOn){
                     Name4.setText(lineParts[0]);
                     if (readIndex == 1){Desc4.setText(lineParts[1] + "\t\t" + lineParts[2] + "\n" + lineParts[4] + " " + lineParts[5] + " " + lineParts[6]);}
                     else{ Desc4.setText(lineParts[readIndex]);}
+                    apply4.setVisible(true);
                 }
                 else if (count == 4 + numDisplayOn){
                     Name5.setText(lineParts[0]);
                     if (readIndex == 1){Desc5.setText(lineParts[1] + "\t\t" + lineParts[2] + "\n" + lineParts[4] + " " + lineParts[5] + " " + lineParts[6]);}
                     else{ Desc5.setText(lineParts[readIndex]);}
+                    apply5.setVisible(true);
                 }
                 count += 1;
             }
