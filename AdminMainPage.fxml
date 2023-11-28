@@ -21,11 +21,12 @@
 
 <AnchorPane fx:id="adminMainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="612.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="adminMainPageController">
    <children>
-      <MenuButton fx:id="adminActionSelect" layoutX="19.0" layoutY="50.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="174.0" text="Options">
+      <MenuButton fx:id="adminActionSelect" layoutX="19.0" layoutY="50.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="220.0" text="Options">
         <items>
           <MenuItem fx:id="createScholarship" mnemonicParsing="false" onAction="#displayFormCreation" onMenuValidation="#displayFormCreation" text="Create Scholarship Forms" />
           <MenuItem fx:id="notifyApplicants" mnemonicParsing="false" onAction="#openNotifyApplicants" onMenuValidation="#openNotifyApplicants" text="Notify Applicants" />
             <MenuItem fx:id="manageAccounts" mnemonicParsing="false" onAction="#openManageAccounts" onMenuValidation="#openManageAccounts" text="Manage Accounts" />
+            <MenuItem mnemonicParsing="false" onAction="#openScholarshipsToBeAwarded" text="Approve Award Recipients" />
         </items>
          <font>
             <Font name="Trebuchet MS" size="13.0" />
@@ -466,7 +467,7 @@
          </children>
       </AnchorPane>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c63232" height="45.0" layoutX="-3.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="623.0" AnchorPane.leftAnchor="-8.0" AnchorPane.rightAnchor="-3.0" AnchorPane.topAnchor="0.0" />
-      <Label fx:id="titleLabel" layoutX="218.0" layoutY="12.0" text="Administrator Login" textFill="#0c234b">
+      <Label fx:id="titleLabel" layoutX="250.0" layoutY="12.0" text="Administrator" textFill="#0c234b">
          <font>
             <Font name="Trebuchet MS" size="19.0" />
          </font>
@@ -481,6 +482,104 @@
             <Font name="Trebuchet MS" size="13.0" />
          </font>
       </Button>
+      <AnchorPane fx:id="scholarshipsToAwardPane" layoutX="4.0" layoutY="78.0" prefHeight="321.0" prefWidth="607.0" visible="false">
+         <children>
+            <ListView fx:id="scholarshipsToAwardList" layoutX="36.0" layoutY="45.0" onMouseClicked="#displayRecipientDetails" prefHeight="245.0" prefWidth="536.0" />
+            <Text layoutX="241.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ready to be Awarded">
+               <font>
+                  <Font name="Trebuchet MS" size="13.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="scholarshipAwardDetailsPane" layoutX="2.0" layoutY="79.0" prefHeight="321.0" prefWidth="615.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-3.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="79.0">
+         <children>
+            <Text layoutX="232.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Selected Recipient Details" underline="true">
+               <font>
+                  <Font name="Trebuchet MS" size="13.0" />
+               </font>
+            </Text>
+            <Text layoutX="252.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Scholarship Details" underline="true">
+               <font>
+                  <Font name="Trebuchet MS" size="13.0" />
+               </font>
+            </Text>
+            <Text fx:id="awardTitle" layoutX="79.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+               <font>
+                  <Font name="Trebuchet MS Bold" size="13.0" />
+               </font>
+            </Text>
+            <Text fx:id="awardAmount" layoutX="79.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+               <font>
+                  <Font name="Trebuchet MS" size="13.0" />
+               </font>
+            </Text>
+            <Text fx:id="awardDetails" layoutX="232.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="284.21630859375">
+               <font>
+                  <Font name="Trebuchet MS" size="13.0" />
+               </font>
+            </Text>
+            <Text layoutX="78.0" layoutY="149.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student ID:">
+               <font>
+                  <Font name="Trebuchet MS" size="13.0" />
+               </font>
+            </Text>
+            <Text layoutX="78.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Score:">
+               <font>
+                  <Font name="Trebuchet MS" size="13.0" />
+               </font>
+            </Text>
+            <Text layoutX="78.0" layoutY="211.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Comments:">
+               <font>
+                  <Font name="Trebuchet MS" size="13.0" />
+               </font>
+            </Text>
+            <Text fx:id="studentID" layoutX="154.0" layoutY="149.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+               <font>
+                  <Font name="Trebuchet MS" size="13.0" />
+               </font>
+            </Text>
+            <Text fx:id="studentScore" layoutX="129.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+               <font>
+                  <Font name="Trebuchet MS" size="13.0" />
+               </font>
+            </Text>
+            <Text fx:id="studentComments" layoutX="160.0" layoutY="211.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="371.21630859375">
+               <font>
+                  <Font name="Trebuchet MS" size="13.0" />
+               </font>
+            </Text>
+            <Button layoutX="169.0" layoutY="242.0" mnemonicParsing="false" onAction="#openScholarshipsToBeAwarded" text="Back">
+               <font>
+                  <Font name="Trebuchet MS" size="13.0" />
+               </font>
+            </Button>
+            <Button layoutX="336.0" layoutY="243.0" mnemonicParsing="false" onAction="#displayAwardConfirmation" text="Approve Award">
+               <font>
+                  <Font name="Trebuchet MS" size="13.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="awardApprovalConfirmationPane" layoutX="-3.0" layoutY="79.0" prefHeight="321.0" prefWidth="620.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-8.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="79.0">
+         <children>
+            <Text layoutX="225.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Scholarship Award Approved">
+               <font>
+                  <Font name="Trebuchet MS" size="13.0" />
+               </font>
+            </Text>
+            <Button layoutX="167.0" layoutY="173.0" mnemonicParsing="false" onAction="#openScholarshipsToBeAwarded" text="Approve Another Award">
+               <font>
+                  <Font name="Trebuchet MS" size="13.0" />
+               </font>
+            </Button>
+            <Button layoutX="402.0" layoutY="173.0" mnemonicParsing="false" onAction="#returnToMain" text="Done">
+               <font>
+                  <Font name="Trebuchet MS" size="13.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
    </children>
    <padding>
       <Insets left="5.0" />

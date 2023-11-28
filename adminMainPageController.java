@@ -42,6 +42,8 @@ public class adminMainPageController implements Initializable{
 
     private ArrayList<String> unpubScholarships;
 
+    private ArrayList<String> readyToAwardScholarships;
+
     @FXML
     private MenuButton adminActionSelect;
 
@@ -86,6 +88,15 @@ public class adminMainPageController implements Initializable{
 
     @FXML
     private AnchorPane formCreationConfirmationPane;
+
+    @FXML
+    private AnchorPane scholarshipAwardDetailsPane;
+
+    @FXML
+    private AnchorPane scholarshipsToAwardPane;
+
+    @FXML
+    private AnchorPane awardApprovalConfirmationPane;
 
     @FXML
     private Button createAccounts;
@@ -184,6 +195,9 @@ public class adminMainPageController implements Initializable{
     private ListView<String> unpublishedScholarshipsList;
 
     @FXML
+    private ListView<String> scholarshipsToAwardList;
+
+    @FXML
     private MenuButton accountTypeSel;
 
     @FXML
@@ -280,6 +294,9 @@ public class adminMainPageController implements Initializable{
     private Text confirmEmail1, confirmType1, confirmUser1;
 
     @FXML
+    private Text awardTitle, awardAmount, awardDetails, studentID, studentScore, studentComments;
+
+    @FXML
     void search(ActionEvent event) {
         scholarships = getScholarships();
         listView.getItems().clear();
@@ -292,6 +309,8 @@ public class adminMainPageController implements Initializable{
         unpubScholarships = getUnpubScholarships();
         listView.getItems().addAll(scholarships);
         unpublishedScholarshipsList.getItems().addAll(unpubScholarships);
+        readyToAwardScholarships = getReadyToAward();
+        scholarshipsToAwardList.getItems().addAll(readyToAwardScholarships);
     }
 
     private List<String> searchList(String searchWords, List<String> listOfStrings) {
@@ -306,6 +325,24 @@ public class adminMainPageController implements Initializable{
 
     private ArrayList<String> getScholarships() {
         String csvFile = "src/Data/scholarships.csv";
+        String line;
+
+        ArrayList<String> returnScholarships = new ArrayList<>();
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(csvFile))) {
+
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split("#");
+                returnScholarships.add(parts[0]);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return returnScholarships;
+    }
+
+    private ArrayList<String> getReadyToAward() {
+        String csvFile = "src/Data/readyToBeAwarded.csv";
         String line;
 
         ArrayList<String> returnScholarships = new ArrayList<>();
@@ -357,6 +394,9 @@ public class adminMainPageController implements Initializable{
         notificationConfirmation.setVisible(false);
         scholarshipToPublishScroll.setVisible(false);
         formCreationConfirmationPane.setVisible(false);
+        scholarshipsToAwardPane.setVisible(false);
+        scholarshipAwardDetailsPane.setVisible(false);
+        awardApprovalConfirmationPane.setVisible(false);
 
         unpubScholarships = getUnpubScholarships();
         unpublishedScholarshipsList.getItems().clear();
@@ -462,6 +502,9 @@ public class adminMainPageController implements Initializable{
         scholarshipFormCreationPane.setVisible(false);
         scholarshipToPublishScroll.setVisible(false);
         formCreationConfirmationPane.setVisible(false);
+        scholarshipsToAwardPane.setVisible(false);
+        scholarshipAwardDetailsPane.setVisible(false);
+        awardApprovalConfirmationPane.setVisible(false);
 
         findDeleteUser.setText(null);
         confirmDeleteEmail.setText(null);
@@ -497,6 +540,9 @@ public class adminMainPageController implements Initializable{
         scholarshipFormCreationPane.setVisible(false);
         scholarshipToPublishScroll.setVisible(false);
         formCreationConfirmationPane.setVisible(false);
+        scholarshipsToAwardPane.setVisible(false);
+        scholarshipAwardDetailsPane.setVisible(false);
+        awardApprovalConfirmationPane.setVisible(false);
 
         accountCreateUser.setText(null);
         accountCreateEmail.setText(null);
@@ -529,6 +575,9 @@ public class adminMainPageController implements Initializable{
         scholarshipFormCreationPane.setVisible(false);
         scholarshipToPublishScroll.setVisible(false);
         formCreationConfirmationPane.setVisible(false);
+        scholarshipsToAwardPane.setVisible(false);
+        scholarshipAwardDetailsPane.setVisible(false);
+        awardApprovalConfirmationPane.setVisible(false);
 
         adminActionSelect.setText("Options");
 
@@ -912,5 +961,124 @@ public class adminMainPageController implements Initializable{
             System.out.println("Account Type Select Error");
         }
     }
+
+    @FXML
+    void openScholarshipsToBeAwarded (ActionEvent event) {
+        readyToAwardScholarships = getReadyToAward();
+        scholarshipsToAwardList.getItems().clear();
+        scholarshipsToAwardList.getItems().addAll(readyToAwardScholarships);
+
+        notifyApplicantsPane.setVisible(false);
+        createOrDeletePane.setVisible(false);
+        createAccountsPane.setVisible(false);
+        deleteAccountsPane.setVisible(false);
+        createAccountFieldsPane.setVisible(false);
+        accountCreationConfirmationPane.setVisible(false);
+        accountDeletionConfirmationPane.setVisible(false);
+        findDeletePane.setVisible(false);
+        confirmDeletePane.setVisible(false);
+        scholarshipToNotifyScroll.setVisible(false);
+        notificationConfirmation.setVisible(false);
+        scholarshipFormCreationPane.setVisible(false);
+        scholarshipToPublishScroll.setVisible(false);
+        formCreationConfirmationPane.setVisible(false);
+        scholarshipAwardDetailsPane.setVisible(false);
+        awardApprovalConfirmationPane.setVisible(false);
+
+        scholarshipsToAwardPane.setVisible(true);
+
+        adminActionSelect.setText("Approve Award Recipients");
+    }
+
+    @FXML
+    void displayRecipientDetails() {
+        String title = scholarshipsToAwardList.getSelectionModel().getSelectedItem();
+        String csvFile = new String("src/Data/readyToBeAwarded.csv");
+        String line;
+        String csvSplitBy = new String("#");
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(csvFile))) {
+
+            while ((line = reader.readLine()) != null) {
+                String[] scholarship = line.split(csvSplitBy);
+                if (scholarship[0].equals(title)) {
+                    awardTitle.setText(scholarship[0]);
+                    awardAmount.setText(scholarship[1]);
+                    awardDetails.setText(scholarship[4] + " " + scholarship[5]);
+                    break;
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        String appFile = new String("src/Data/" + title + "_Applicants.csv");
+        try (BufferedReader reader = new BufferedReader(new FileReader(appFile))) {
+            String prevLine = "";
+            while ((line = reader.readLine()) != null) {
+                prevLine = line;
+            }
+            String[] student = prevLine.split(csvSplitBy);
+            studentID.setText(student[2]);
+            studentScore.setText(student[16]);
+            studentComments.setText(student[17]);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        scholarshipsToAwardPane.setVisible(false);
+        scholarshipAwardDetailsPane.setVisible(true);
+    }
+
+    @FXML
+    void displayAwardConfirmation(ActionEvent event) {
+        String archiveFile = "src/Data/archivedScholarships.csv";
+        String reviewFile = "src/Data/readyToBeAwarded.csv";
+        String title = awardTitle.getText();
+        String line;
+        String[] lineParts;
+
+        try { 
+            FileWriter outputFile = new FileWriter(new File(archiveFile), true); 
+
+            try (BufferedReader reader = new BufferedReader(new FileReader(reviewFile))){
+            while ((line = reader.readLine()) != null){
+                if ((lineParts = line.split("#"))[0].equals(title)) {
+                    StringBuilder newLine = new StringBuilder();
+                    for (int i = 0; i < 6; i++) {
+                        newLine.append(lineParts[i]);
+                        newLine.append("#");
+                    }
+                    newLine.append(lineParts[6]);
+                    newLine.append("\n");
+
+                    outputFile.write(newLine.toString());
+                    outputFile.close();
+                    System.out.println("Archiving " + newLine.toString());
+                }
+                }
+            } catch (Exception e){ System.out.println("Error opening schol file"); }
+        }
+        catch (IOException e){
+            e.printStackTrace();
+        }
+
+        String rewrite = new String("");
+        try (BufferedReader reader = new BufferedReader(new FileReader(reviewFile))){
+            while ((line = reader.readLine()) != null){
+                if (!(lineParts = line.split("#"))[0].equals(title)){
+                    rewrite += line;
+                    rewrite += "\n";
+                }
+            }
+        } catch (Exception e){ System.out.println("Error opening schol file"); }
+        try (FileWriter fw = new FileWriter(new File(reviewFile))) {
+            fw.write(rewrite);
+        } catch (Exception e) { System.out.println("Error writing to schol file"); }
+
+        scholarshipAwardDetailsPane.setVisible(false);
+        awardApprovalConfirmationPane.setVisible(true);
+    }
+
 
 }
