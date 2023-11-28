@@ -33,7 +33,7 @@
          </font></TextField>
       <Label id="fundsLabel" fx:id="fundsLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="236.0" layoutY="76.0" prefHeight="52.0" prefWidth="139.0" text="\$0">
          <font>
-            <Font name="Trebuchet MS" size="13.0" />
+            <Font name="Trebuchet MS" size="25.0" />
          </font>
       </Label>
       <Label layoutX="25.0" layoutY="179.0" text="Scholarship name:">
@@ -50,12 +50,12 @@
          </font></Label>
       <Label layoutX="111.0" layoutY="139.0" text="Deposit Funds">
          <font>
-            <Font name="Trebuchet MS" size="13.0" />
+            <Font name="Trebuchet MS" size="15.0" />
          </font>
       </Label>
       <Label layoutX="400.0" layoutY="139.0" text="Disburse Funds">
          <font>
-            <Font name="Trebuchet MS" size="13.0" />
+            <Font name="Trebuchet MS" size="15.0" />
          </font>
       </Label>
       <Label fx:id="errorMsg" layoutX="447.0" layoutY="211.0" text="Scholarship not found" textFill="#f20202" visible="false">

@@ -4,6 +4,8 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,11 +13,16 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuButton;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class ReviewerHomeApplicantsController {
+
+    ObservableList<String> searchChoiceList = FXCollections.observableArrayList("Degree", "Gender", "Application Date");
+
     @FXML
     private Label Desc1;
     @FXML
@@ -61,6 +68,12 @@ public class ReviewerHomeApplicantsController {
     @FXML
     private Button searchButton;
 
+    @FXML
+    private ChoiceBox<String> searchByChoice;
+
+    @FXML
+    private MenuButton searchByMenu;
+
     private int numDisplayOn = 0;
     private String scholarshipName;
 
@@ -79,6 +92,9 @@ public class ReviewerHomeApplicantsController {
         apply3.setVisible(false);
         apply4.setVisible(false);
         apply5.setVisible(false);
+
+        searchByChoice.setValue("Search By");
+        searchByChoice.setItems(searchChoiceList);
 
         try (BufferedReader reader = new BufferedReader(new FileReader("src/Data/currentScholarship.csv"))){
             scholarshipName = reader.readLine().split("#")[0];
@@ -163,6 +179,8 @@ public class ReviewerHomeApplicantsController {
         initialize();
     }
 
+    
+
     @FXML
     void apply(ActionEvent event) {
         String id = ((Node)event.getSource()).getId();
@@ -195,6 +213,7 @@ public class ReviewerHomeApplicantsController {
     @FXML
     void searchScholarships(ActionEvent event) {
         System.out.println("Search term: " + searchBar.getText());
+        System.out.println("Search criteria: " + searchByChoice.getValue());
         numDisplayOn = 0;
         initialize();
     }
