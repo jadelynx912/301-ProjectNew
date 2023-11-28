@@ -67,34 +67,76 @@ public class StudentHomeController {
         String line;
         String[] lineParts;
         int count = 0;
+        boolean found = false;
         try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
             if (numDisplayOn < 0) { numDisplayOn += 5; }
             while((line = reader.readLine()) != null){
+                found = false;
                 lineParts = line.split("#");
                 if (count == 0 + numDisplayOn){
                     Name1.setText(lineParts[0]);
                     if (readIndex == 1){Desc1.setText(lineParts[1] + "\t\t" + lineParts[2] + "\n" + lineParts[4] + " " + lineParts[5] + " " + lineParts[6]);}
-                    else{ Desc1.setText(lineParts[readIndex]);}
+                    else{
+                        try (BufferedReader r1 = new BufferedReader(new FileReader("src/Data/scholarships.csv"))) {
+                            while ((line = r1.readLine()) != null){
+                                if (lineParts[0].equals(line.split("#")[0])){ found = true; }
+                            }
+                            if (found) {Desc1.setText("Waiting for Review");}
+                            else {Desc1.setText("Awarded");}
+                        } catch (Exception e) {System.out.println("Error writing to curr scholarship file"); }
+                    }
                 }
                 else if (count == 1 + numDisplayOn){
                     Name2.setText(lineParts[0]);
                     if (readIndex == 1){Desc2.setText(lineParts[1] + "\t\t" + lineParts[2] + "\n" + lineParts[4] + " " + lineParts[5] + " " + lineParts[6]);}
-                    else{ Desc2.setText(lineParts[readIndex]);}
+                    else{
+                        try (BufferedReader r1 = new BufferedReader(new FileReader("src/Data/scholarships.csv"))) {
+                            while ((line = r1.readLine()) != null){
+                                if (lineParts[0].equals(line.split("#")[0])){ found = true; }
+                            }
+                            if (found) {Desc2.setText("Waiting for Review");}
+                            else {Desc2.setText("Awarded");}
+                        } catch (Exception e) {System.out.println("Error writing to curr scholarship file"); }
+                    }
                 }
                 else if (count == 2 + numDisplayOn){
                     Name3.setText(lineParts[0]);
                     if (readIndex == 1){Desc3.setText(lineParts[1] + "\t\t" + lineParts[2] + "\n" + lineParts[4] + " " + lineParts[5] + " " + lineParts[6]);}
-                    else{ Desc3.setText(lineParts[readIndex]);}
+                    else{
+                        try (BufferedReader r1 = new BufferedReader(new FileReader("src/Data/scholarships.csv"))) {
+                            while ((line = r1.readLine()) != null){
+                                if (lineParts[0].equals(line.split("#")[0])){ found = true; }
+                            }
+                            if (found) {Desc3.setText("Waiting for Review");}
+                            else {Desc3.setText("Awarded");}
+                        } catch (Exception e) {System.out.println("Error writing to curr scholarship file"); }
+                    }
                 }
                 else if (count == 3 + numDisplayOn){
                     Name4.setText(lineParts[0]);
                     if (readIndex == 1){Desc4.setText(lineParts[1] + "\t\t" + lineParts[2] + "\n" + lineParts[4] + " " + lineParts[5] + " " + lineParts[6]);}
-                    else{ Desc4.setText(lineParts[readIndex]);}
+                    else{
+                        try (BufferedReader r1 = new BufferedReader(new FileReader("src/Data/scholarships.csv"))) {
+                            while ((line = r1.readLine()) != null){
+                                if (lineParts[0].equals(line.split("#")[0])){ found = true; }
+                            }
+                            if (found) {Desc4.setText("Waiting for Review");}
+                            else {Desc4.setText("Awarded");}
+                        } catch (Exception e) {System.out.println("Error writing to curr scholarship file"); }
+                    }
                 }
                 else if (count == 4 + numDisplayOn){
                     Name5.setText(lineParts[0]);
                     if (readIndex == 1){Desc5.setText(lineParts[1] + "\t\t" + lineParts[2] + "\n" + lineParts[4] + " " + lineParts[5] + " " + lineParts[6]);}
-                    else{ Desc5.setText(lineParts[readIndex]);}
+                    else{
+                        try (BufferedReader r1 = new BufferedReader(new FileReader("src/Data/scholarships.csv"))) {
+                            while ((line = r1.readLine()) != null){
+                                if (lineParts[0].equals(line.split("#")[0])){ found = true; }
+                            }
+                            if (found) {Desc5.setText("Waiting for Review");}
+                            else {Desc5.setText("Awarded");}
+                        } catch (Exception e) {System.out.println("Error writing to curr scholarship file"); }
+                    }
                 }
                 count += 1;
             }
