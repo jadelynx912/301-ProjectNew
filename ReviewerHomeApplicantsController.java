@@ -247,4 +247,18 @@ public class ReviewerHomeApplicantsController {
             System.out.println("Account Type Select Error");
         }
     }
+
+    @FXML
+    void selectRecipient(ActionEvent event) {
+        Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        try {
+            Parent root = FXMLLoader.load(MainApp.class.getResource("SelectAwardee.fxml"));
+            Scene scene = new Scene(root);
+
+            primaryStage.setScene(scene);
+            primaryStage.show();
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+    }
 }

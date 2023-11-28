@@ -13,7 +13,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ReviewerHomeApplicantsController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="selectAwardeeController">
    <children>
       <Button fx:id="searchButton" layoutX="508.0" layoutY="57.0" mnemonicParsing="false" onAction="#searchScholarships" text="Search">
          <font>
@@ -78,23 +78,23 @@
                <font>
                   <Font name="Trebuchet MS" size="13.0" />
                </font></Label>
-            <Button fx:id="apply1" mnemonicParsing="false" onAction="#apply" text="Score" GridPane.columnIndex="2">
+            <Button fx:id="apply1" mnemonicParsing="false" onAction="#apply" text="Award" GridPane.columnIndex="2">
                <font>
                   <Font name="Trebuchet MS" size="13.0" />
                </font></Button>
-            <Button fx:id="apply2" mnemonicParsing="false" onAction="#apply" text="Score" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <Button fx:id="apply2" mnemonicParsing="false" onAction="#apply" text="Award" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <font>
                   <Font name="Trebuchet MS" size="13.0" />
                </font></Button>
-            <Button fx:id="apply3" mnemonicParsing="false" onAction="#apply" text="Score" GridPane.columnIndex="2" GridPane.rowIndex="2">
+            <Button fx:id="apply3" mnemonicParsing="false" onAction="#apply" text="Award" GridPane.columnIndex="2" GridPane.rowIndex="2">
                <font>
                   <Font name="Trebuchet MS" size="13.0" />
                </font></Button>
-            <Button fx:id="apply4" mnemonicParsing="false" onAction="#apply" text="Score" GridPane.columnIndex="2" GridPane.rowIndex="3">
+            <Button fx:id="apply4" mnemonicParsing="false" onAction="#apply" text="Award" GridPane.columnIndex="2" GridPane.rowIndex="3">
                <font>
                   <Font name="Trebuchet MS" size="13.0" />
                </font></Button>
-            <Button fx:id="apply5" mnemonicParsing="false" onAction="#apply" text="Score" GridPane.columnIndex="2" GridPane.rowIndex="4">
+            <Button fx:id="apply5" mnemonicParsing="false" onAction="#apply" text="Award" GridPane.columnIndex="2" GridPane.rowIndex="4">
                <font>
                   <Font name="Trebuchet MS" size="13.0" />
                </font></Button>
@@ -129,9 +129,5 @@
          </font>
       </Button>
       <ChoiceBox fx:id="searchByChoice" layoutX="25.0" layoutY="56.0" prefWidth="150.0" />
-      <Button layoutX="465.0" layoutY="359.0" mnemonicParsing="false" onAction="#selectRecipient" text="Select Recipient">
-         <font>
-            <Font name="Trebuchet MS" size="12.0" />
-         </font></Button>
    </children>
 </AnchorPane>
