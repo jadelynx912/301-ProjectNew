@@ -52,6 +52,7 @@ public class FundsStewardController {
             this.funds -= (int)amount;
             fundsLabel.setText("$" + Integer.toString(funds));
             scholarships.remove(name);
+            errorMsg.setVisible(false);
         }
         else{
             errorMsg.setVisible(true);
