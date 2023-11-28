@@ -1054,7 +1054,6 @@ public class adminMainPageController implements Initializable{
 
                     outputFile.write(newLine.toString());
                     outputFile.close();
-                    System.out.println("Archiving " + newLine.toString());
                 }
                 }
             } catch (Exception e){ System.out.println("Error opening schol file"); }
@@ -1075,6 +1074,17 @@ public class adminMainPageController implements Initializable{
         try (FileWriter fw = new FileWriter(new File(reviewFile))) {
             fw.write(rewrite);
         } catch (Exception e) { System.out.println("Error writing to schol file"); }
+
+        String studentFile = "src/Data/studentInfo.csv";
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(studentFile))){
+            while ((line = reader.readLine()) != null){
+                if ((lineParts = line.split("/"))[3].equals(studentID.getText())){
+                    System.out.println("Email sent to " + lineParts[2]);
+                    break;
+                }
+            }
+        } catch (Exception e){ System.out.println("Error opening schol file"); }
 
         scholarshipAwardDetailsPane.setVisible(false);
         awardApprovalConfirmationPane.setVisible(true);

@@ -563,9 +563,9 @@
       </AnchorPane>
       <AnchorPane fx:id="awardApprovalConfirmationPane" layoutX="-3.0" layoutY="79.0" prefHeight="321.0" prefWidth="620.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-8.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="79.0">
          <children>
-            <Text layoutX="225.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Scholarship Award Approved">
+            <Text layoutX="212.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Scholarship Award Approved">
                <font>
-                  <Font name="Trebuchet MS" size="13.0" />
+                  <Font name="Trebuchet MS" size="15.0" />
                </font>
             </Text>
             <Button layoutX="167.0" layoutY="173.0" mnemonicParsing="false" onAction="#openScholarshipsToBeAwarded" text="Approve Another Award">
@@ -578,6 +578,11 @@
                   <Font name="Trebuchet MS" size="13.0" />
                </font>
             </Button>
+            <Text layoutX="163.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="An email has been sent to the selected recipient.">
+               <font>
+                  <Font name="Trebuchet MS" size="13.0" />
+               </font>
+            </Text>
          </children>
       </AnchorPane>
    </children>
